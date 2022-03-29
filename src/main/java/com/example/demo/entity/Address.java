@@ -1,9 +1,12 @@
 package com.example.demo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address {
@@ -13,7 +16,9 @@ public class Address {
 	Integer id;
 	String city;
 	int pin;
-
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	User user;
 	public Integer getId() {
 		return id;
 	}
@@ -36,5 +41,13 @@ public class Address {
 
 	public void setPin(int pin) {
 		this.pin = pin;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
