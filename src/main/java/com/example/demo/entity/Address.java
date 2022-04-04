@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Address {
 
@@ -16,9 +18,7 @@ public class Address {
 	Integer id;
 	String city;
 	int pin;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
-	User user;
+
 	public Integer getId() {
 		return id;
 	}
@@ -42,12 +42,12 @@ public class Address {
 	public void setPin(int pin) {
 		this.pin = pin;
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 }
